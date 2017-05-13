@@ -7,13 +7,12 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class SinglePostComponent implements OnInit {
 
-  @Input() postTitle: String;
+  @Input() postTitle: String = 'Default title!';
 
   constructor() {
   }
 
   ngOnInit() {
-    console.log('postTitle: ', this.postTitle);
   }
 
 }

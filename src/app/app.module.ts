@@ -16,6 +16,7 @@ import {PostsService} from './shared/posts/posts.service';
     NavigationComponent,
     SinglePostComponent
   ],
+  entryComponents: [SinglePostComponent],
   imports: [
     BrowserModule,
     FormsModule,
