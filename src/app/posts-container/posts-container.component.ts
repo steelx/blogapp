@@ -3,6 +3,7 @@ import {
   ViewContainerRef
 } from '@angular/core';
 import {SinglePostComponent} from './single-post/single-post.component';
+import {PostsService} from "../shared/posts/posts.service";
 
 @Component({
   selector: 'app-posts-container',
@@ -12,9 +13,12 @@ import {SinglePostComponent} from './single-post/single-post.component';
 export class PostsContainerComponent implements OnInit, AfterContentInit {
   @ViewChild('container', {read: ViewContainerRef}) container;
 
-  constructor(private resolver: ComponentFactoryResolver) { }
+  posts$;
+  constructor(private resolver: ComponentFactoryResolver,
+              private postService: PostsService) { }
 
   ngOnInit() {
+    this.posts$ = this.postService.getPosts();
   }
 
   ngAfterContentInit() {
