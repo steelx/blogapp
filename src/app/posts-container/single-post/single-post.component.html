@@ -1,3 +1,7 @@
-<p>
-  single-post works! <span>{{postTitle}}</span>
-</p>
+<h3>Blog posts</h3>
+<section>
+  <div *ngFor="let post of postsList">
+      <h4>{{post.title}}</h4>
+      <p>{{post.body}}</p>
+  </div>
+</section>

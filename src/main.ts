@@ -6,6 +6,7 @@ import { environment } from './environments/environment';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/publishReplay';
 
 if (environment.production) {
   enableProdMode();

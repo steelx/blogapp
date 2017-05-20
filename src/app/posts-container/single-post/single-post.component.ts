@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class SinglePostComponent implements OnInit {
 
-  @Input() postTitle: String = 'Default title!';
+  @Input() postsList;
 
   constructor() {
   }
