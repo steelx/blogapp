@@ -1,1 +1,76 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: #e8e8e8;
+}
+
+.wrapper {
+    background: #fafafa;
+    border-radius: 5px;
+}
+
+.button {
+    min-width: 120px;
+    background: #0abe51;
+    font-size: 14px;
+    color: #fff;
+}
+
+.button:hover {
+    background: #049525;
+}
+
+.button:focus, button:focus{
+    outline: none !important;
+}
+
+.button.loading {
+    background: #0abe51 url(/assets/loader-white.svg) no-repeat 10% center;
+    padding-left: 35px;
+    background-size: 25px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background-color: rgba(10, 190, 81, 0.05);
+}
+
+.table > thead > tr > th {
+    border-bottom: 2px solid #049525;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+    border-top: 1px solid #0abe51;
+    padding: 10px 5px;
+}
+
+.bs-callout-info {
+    border-left-color: #1b809e !important;
+}
+
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #b0c4de;
+    border-left-width: 5px;
+    border-radius: 3px;
+    background-color: #fafafa;
+}
+
+.bs-callout-info h4 {
+    color: #1b809e;
+}
+
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.bs-callout p:last-child {
+    margin-bottom: 0;
+    font-size: 14px;
+}
