@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
-import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
+import {AngularFireDatabase} from "angularfire2/database";
+import {Post} from "../model/post";
 
 @Injectable()
 export class PostsService {
 
-  private rootUrl = 'https://jsonplaceholder.typicode.com';
-  constructor(private _http: Http) { }
+  constructor(private af: AngularFireDatabase) { }
 
-
-  getPosts(): Observable<any> {
-    return this._http.get(`${this.rootUrl}/posts`)
-      .map(res => res.json());
+  getPosts(): Observable<Post[]> {
+    return this.af.list('/posts', {
+        query: {
+          orderByKey: true,
+          limitToFirst: 10
+        }
+      })
+      .map(Post.fromJsonList)
+      .do(console.log);
   }
 
 }
