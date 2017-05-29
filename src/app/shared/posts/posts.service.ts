@@ -19,4 +19,9 @@ export class PostsService {
       .do(console.log);
   }
 
+
+  findPostByKey(key): Observable<Post> {
+    return this.af.object(`/posts/${key}`);
+  }
+
 }

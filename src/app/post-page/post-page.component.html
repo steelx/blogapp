@@ -1,3 +1,15 @@
-<p>
-  post-page works!
-</p>
+<h3>Blog Post</h3>
+<section class="wrapper jumbotron" *ngIf="post$ | async as post else postLoading">
+    <h4>{{post.post_title}}</h4>
+    <p>{{post.post_body}}</p>
+    <p>
+        <a href="">{{post.user}}</a>
+        <small>{{post.date | date}}</small>
+    </p>
+</section>
+
+<ng-template #postLoading>
+    <div>
+        Loading...
+    </div>
+</ng-template>

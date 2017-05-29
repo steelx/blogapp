@@ -11,13 +11,17 @@ import {PostsService} from './shared/posts/posts.service';
 import {AngularFireModule} from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {environment} from '../environments/environment';
+import {PostPageComponent} from "./post-page/post-page.component";
+import {RouterModule} from "@angular/router";
+import {ROUTES} from "./app.routes";
 
 @NgModule({
   declarations: [
     AppComponent,
     PostsContainerComponent,
     NavigationComponent,
-    SinglePostComponent
+    SinglePostComponent,
+    PostPageComponent
   ],
   entryComponents: [SinglePostComponent],
   imports: [
@@ -25,7 +29,8 @@ import {environment} from '../environments/environment';
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [PostsService],
   bootstrap: [AppComponent]
