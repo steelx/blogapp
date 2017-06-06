@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "populate-db": "./node_modules/.bin/ts-node ./populate-firebase-db.ts"
+    "populate-db": "./node_modules/.bin/ts-node ./populate-firebase-db.ts",
+    "shallow-db": "./node_modules/.bin/ts-node ./populate-shallow-db.ts"
   },
   "private": true,
   "dependencies": {
