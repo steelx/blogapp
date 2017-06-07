@@ -1,5 +1,8 @@
 <p>
   posts-container works!
 </p>
-
+<div>
+    <button (click)="nextPosts()">Next posts</button>
+    <button>Prev posts</button>
+</div>
 <app-single-post [postsList]="posts$"></app-single-post>
