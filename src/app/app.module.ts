@@ -14,6 +14,7 @@ import {environment} from '../environments/environment';
 import {PostPageComponent} from "./post-page/post-page.component";
 import {RouterModule} from "@angular/router";
 import {ROUTES} from "./app.routes";
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {ROUTES} from "./app.routes";
     PostsContainerComponent,
     NavigationComponent,
     SinglePostComponent,
-    PostPageComponent
+    PostPageComponent,
+    UserProfileComponent
   ],
   entryComponents: [SinglePostComponent],
   imports: [
