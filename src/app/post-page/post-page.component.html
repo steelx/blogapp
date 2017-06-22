@@ -3,7 +3,7 @@
     <h4>{{post.post_title}}</h4>
     <p>{{post.post_body}}</p>
     <p>
-        <a href="">{{post.user}}</a>
+        <a [href]="'/users/' + post.user">{{post.user}}</a>
         <small>{{post.date | date}}</small>
     </p>
 </section>
