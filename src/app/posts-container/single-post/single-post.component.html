@@ -2,7 +2,7 @@
 <section class="wrapper jumbotron" *ngIf="postsList | async as posts else postsLoading">
   <div *ngFor="let post of posts" class="bs-callout bs-callout-info">
       <h4><a [href]="'/posts/' + post.$key">{{post.post_title}}</a></h4>
-      <p>{{post.post_body}}</p>
+
       <p>
           <a [href]="'/users/' + post.user">{{post.user}}</a>
           <small>{{post.date | date}}</small>

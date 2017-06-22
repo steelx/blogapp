@@ -1,5 +1,28 @@
-<p>
-  user-profile works!
-</p>
+<h2>User profile</h2>
+<div class="well well-sm" *ngIf="user$ | async as user else userLoading">
+    <div class="row">
+        <div class="col-sm-4 col-md-2">
+            <img src="http://placehold.it/100x100" alt="" class="img-rounded img-responsive" />
+        </div>
+        <div class="col-sm-8 col-md-10">
+            <h4>{{user.first_name}} {{user.last_name}} <span>({{user.username}})</span></h4>
+            <small>
+                <cite>{{user.department}}
+                    <i class="glyphicon glyphicon-map-marker"></i></cite>
+            </small>
+            <p>
+                <i class="glyphicon glyphicon-envelope"></i>{{user.email}}
+            </p>
+            <p>
+                <button (click)="nextPosts()">next posts</button>
+            </p>
+        </div>
+    </div>
+</div>
+<ng-template #userLoading>
+    <div>
+        Fetching user...
+    </div>
+</ng-template>
 
-{{ user$ | async | json }}
+<app-single-post [postsList]="posts$"></app-single-post>
