@@ -4,46 +4,39 @@ import {Observable} from "rxjs/Observable";
 import {User} from "../shared/model/user";
 import {PostsService} from "../shared/posts/posts.service";
 import {Post} from "../shared/model/post";
+import {PostsPaginationService} from "../shared/posts/posts-pagination.service";
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.css']
+  styleUrls: ['./user-profile.component.css'],
+  providers: [PostsPaginationService]
 })
 export class UserProfileComponent implements OnInit {
 
   public user$: Observable<User>;
-  public posts$: Observable<Post[]>;
+  public posts$: Observable<Post[]> = this.postsPaginationService.posts$;
   private username: string;
-  constructor(private route: ActivatedRoute, private postsService: PostsService) { }
+  constructor(private route: ActivatedRoute,
+              private postsService: PostsService,
+              private postsPaginationService: PostsPaginationService) { }
 
   ngOnInit() {
     this.user$ = this.route.params
-      .switchMap(params => {
-        this.username = params['username'];
-        this.getPosts(this.username, {
-          query: {
-            limitToFirst: 3
-          }
-        });
-        return this.postsService.findUserByUsername(this.username);
-      });
+      .switchMap(params => this.postsService.findUserByUsername(params['username']))
+      .publishReplay().refCount();
+
+    this.user$.subscribe(user => this.getPosts(user.$key));
   }
 
-  getPosts(username, query) {
-    this.posts$ = this.postsService.getPostsByUsername(username, query);
+  getPosts(userKey) {
+    this.postsPaginationService.loadFirstPage(userKey);
   }
   nextPosts() {
-    this.posts$.subscribe(posts => {
-      const startAt = posts[posts.length - 1].$key;
-      this.getPosts(this.username, {
-        query: {
-          orderByKey: true,
-          limitToFirst: 3,
-          startAt
-        }
-      });
-    });
+    this.postsPaginationService.loadNextPage();
+  }
+  prevPosts() {
+    this.postsPaginationService.loadPrevPage();
   }
 
 }
