@@ -15,6 +15,7 @@ import {PostPageComponent} from "./post-page/post-page.component";
 import {RouterModule} from "@angular/router";
 import {ROUTES} from "./app.routes";
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     NavigationComponent,
     SinglePostComponent,
     PostPageComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    HomeComponent
   ],
   entryComponents: [SinglePostComponent],
   imports: [
