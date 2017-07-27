@@ -23,11 +23,11 @@ export class LoginComponent implements OnInit {
     const inputValue = this.form.value;
     console.log(inputValue.email, inputValue.password);
     // call to auth servre
-    this.authService.login(inputValue.email, inputValue.password)
-      .subscribe(
-        success => //navigate,
-        error => alert(error)
-      )
+    // this.authService.login(inputValue.email, inputValue.password)
+    //   .subscribe(
+    //     success => //navigate,
+    //     error => alert(error)
+    //   )
   }
 
 }
