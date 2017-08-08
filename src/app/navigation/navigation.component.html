@@ -4,8 +4,9 @@
             <ul class="nav navbar-nav">
                 <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
                 <li><a routerLink="/posts" routerLinkActive="active">Posts</a></li>
-                <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
-                <li><a routerLink="/register" routerLinkActive="active">Register</a></li>
+                <li><a routerLink="/login" routerLinkActive="active" *ngIf="!isLoggedIn">Login</a></li>
+                <li><a (click)="logout()" routerLinkActive="active" *ngIf="isLoggedIn">Logout</a></li>
+                <li><a routerLink="/register" routerLinkActive="active" *ngIf="!isLoggedIn">Register</a></li>
             </ul>
         </div>
     </div>

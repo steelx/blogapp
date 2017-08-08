@@ -10,6 +10,7 @@ import { SinglePostComponent } from './posts-container/single-post/single-post.c
 import {PostsService} from './shared/posts/posts.service';
 import {AngularFireModule} from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import {environment} from '../environments/environment';
 import {PostPageComponent} from "./post-page/post-page.component";
 import {RouterModule} from "@angular/router";
@@ -17,6 +18,7 @@ import {ROUTES} from "./app.routes";
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import {AuthService} from "./shared/auth/auth.service";
 
 @NgModule({
   declarations: [
@@ -37,9 +39,10 @@ import { LoginComponent } from './login/login.component';
     HttpModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    AngularFireAuthModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [PostsService],
+  providers: [PostsService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

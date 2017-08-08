@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../shared/auth/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,11 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class LoginComponent implements OnInit {
 
   public form: FormGroup;
-  constructor(private formBuilder: FormBuilder) {
+  public user$ = this.authService.user;
+
+  constructor(private formBuilder: FormBuilder,
+              private authService: AuthService,
+              private router: Router) {
     this.form = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
@@ -19,15 +25,19 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  loginWithGoogle() {
+    this.authService.loginWithGoogle();
+  }
+
   login() {
     const inputValue = this.form.value;
     console.log(inputValue.email, inputValue.password);
-    // call to auth servre
-    // this.authService.login(inputValue.email, inputValue.password)
-    //   .subscribe(
-    //     success => //navigate,
-    //     error => alert(error)
-    //   )
+
+    this.authService.login(inputValue.email, inputValue.password)
+      .subscribe(
+        success => this.router.navigate(['/posts']),
+        error => alert(error)
+      );
   }
 
 }

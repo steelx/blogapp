@@ -1,4 +1,6 @@
 <section class="login-container">
+  {{ user$ | async | json}}
+
   <h1>Login to Your Account</h1><br>
   <form autocomplete="off" novalidate [formGroup]="form" (submit)="login()">
     <input type="email" name="user" placeholder="Email address" formControlName="email">
@@ -8,5 +10,8 @@
 
   <div class="login-help">
     <a href="#">Register</a> - <a href="#">Forgot Password</a>
+  </div>
+  <div class="login-help">
+    <button (click)="loginWithGoogle()">Login with Google</button>
   </div>
 </section>
